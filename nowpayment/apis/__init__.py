@@ -39,7 +39,7 @@ class BaseAPI:
             set_headers = headers
 
         url = f"https://api.nowpayments.io/v1/{path}"
-        
+
         if self.sandbox:
             url = f"https://api-sandbox.nowpayments.io/v1/{path}"
 
