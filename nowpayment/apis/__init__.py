@@ -14,9 +14,10 @@ class BaseAPI:
         api_key (str): API key.
     """
 
-    def __init__(self, api_key: str, jwt_token: str = None):
+    def __init__(self, api_key: str, jwt_token: str = None, sandbox: bool = False):
         self.api_key = api_key
         self.jwt_token = jwt_token
+        self.sandbox = sandbox
 
     def _request(self, method: str, path: str, headers: Union[None, dict] = Empty, **kwargs):
         """
@@ -36,7 +37,12 @@ class BaseAPI:
             set_headers['Authorization'] = self.jwt_token
         if headers is not Empty:
             set_headers = headers
+
         url = f"https://api.nowpayments.io/v1/{path}"
+        
+        if self.sandbox:
+            url = f"https://api-sandbox.nowpayments.io/v1/{path}"
+
         req = requests.request(
             method,
             url,
