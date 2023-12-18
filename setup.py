@@ -8,7 +8,7 @@ with open('README.md') as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="nowpayment-dylan",
+    name="nowpayments_dylan",
     version="1.6.0",
     author="Mostafa Mosavi",
     author_email="mostafa.uwsgi@gmail.com",
